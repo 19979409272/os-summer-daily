@@ -24,4 +24,10 @@
      - 若省略`else`分支则编译器默认认为`else`类型为`()`
 4. move_semantics:
    - Rust中，变量间赋值默认为移动语义, 变量传递时，要么传递引用，要么复制出一个新的变量进行传递
-5. 
+5. primitive_types:
+   - `bool`: `true` | `false`
+   - `char`: `'single_char'`
+   - `array`: `[type; size]` 初始化也是同样形式
+   - `slice`: 配合`Range`使用，进行数组索引操作，`&array：Slice`： 胖指针， 携带长度信息，而不是像C语言一样的裸指针
+   - 'tuple': `tuple`索引也是从0开始
+   - 模式解构：构造与解构遵循相同的语法，怎么构造就怎么解构
