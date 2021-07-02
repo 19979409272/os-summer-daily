@@ -5,7 +5,7 @@
 
 ## 完成部分rustlings
 ### 问题
-1. assert_eq(left: &String, right: &str)是怎么比较&str与String的？
+1. `assert_eq(left: &String, right: &str)`是怎么比较`&str`与`String`的？
    - 查阅资料:
      - [细谈Rust的所有权](https://zhuanlan.zhihu.com/p/115651233)
      - [Rust中的String和&str](https://zhuanlan.zhihu.com/p/123278299)
@@ -51,3 +51,9 @@
    - 模式解构：构造与解构遵循相同的语法，怎么构造就怎么解构
 6. structs:
    - `StructName; : unit()`
+   - 初始化方式：`StructName {x: 0, y: varName}`，若变量名与成员名相同可省略
+   - 模式解构: `StructName {x, y} = p; println!("{}{}",x,y};` 变量名与成员名相同可省略
+7. enums:
+   - 语法：
+     - `EnumName{V1(TypeName), V2(TypeName),}`: 可携带类型信息
+     - 使用match进行匹配取出其中的值，注意：要匹配所有情况
