@@ -1,14 +1,48 @@
 <!--
  * @Author: Sakura
  * @Date: 2021-07-03 08:28:26
- * @LastEditTime: 2021-07-03 20:22:07
+ * @LastEditTime: 2021-07-03 23:52:52
  * @Description: 第二天的学习
 -->
 # Day2 2021/7/3
 
 ## 学习《rust编程之道》第9章
+- 非正常情况
+  - 失败：不满足程序正确运行条件（契约）（编译时+运行时） => 类型系统、断言
+  - 错误：意料之中的问题，且可以有解决方案(查询数据返回空，打开不存在的文件)
+  - 异常：完全不可预料的问题（空指针...)
+- 失败
+  - 强大的类型系统
+    - 不允许隐式转换
+  - 断言
+    - assert!
+    - assert_eq!
+    - assert_ne!
+    - debug模式
+    - 快速失败策略：尽早暴露错误
+    - 契约： 前置条件、后置条件、前后不变
 
+### 分层处理错误
+- `Option<T>: Some | None`：对None值做特殊处理
+- `Result<T, E>: OK | Err`：处理可以合理解决的问题
+- `Panic`：线程恐慌，处理无法解决的问题
+- `Abort`：中止，处理会发生灾难性后果的情况
 
+#### Option<T>
+- 应用场景： 可选或者可空的情况，主要消除空指针问题
+- unwrap方法：取出Some中的值
+  - `unwrap(): None => Panic!()` (为了不造成线程恐慌就需要预先判断是否为`None`(`is_some()`)，这样就造成两次判断（`unwrap()`)
+  - `unwrap_or(): match匹配的语法糖`
+  - `unwrap_or_else(): 类似_or`
+- `expect`: None => Panic!(&str)`
+- `map[_or[_else]]<U, F: FnOnce(T) -> U>(self, f: F) -> Option<U>`: match匹配的包装，无须取出值，直接在Option<T>内部计算（组合子Combinator）
+- 由于`map()`方法返回`U`类型，如果该闭包刚好返回Option<T>则会造成Some的多层嵌套，所以有另外的组合子`and_then() -> Option<U>, U: f(x), F -> Option<U>`
+
+#### Result<T, E>
+- 应用场景：错误处理
+- Result<T, ()> <=> Option<T>
+- 程序员必须对Result<T, E>的结果进行处理
+- 
 
 ## 学习《rust编程之道》第10章
 ### Cargo
@@ -75,3 +109,4 @@
 
 ## 完成部分rustlings
 - modules:
+  - mod中定义的一切都是私有的，包括`use`
