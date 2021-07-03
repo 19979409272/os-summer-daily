@@ -1,3 +1,9 @@
+<!--
+ * @Author: Sakura
+ * @Date: 2021-07-02 08:22:51
+ * @LastEditTime: 2021-07-03 20:27:39
+ * @Description: 
+-->
 # 每日学习实践记录
 - daily_doc: 每日笔记
 - exercises-rust: rust的一些练习
@@ -18,3 +24,6 @@
 2. 学习《rust编程之道》，主要学习模块，unsafe等
 
 ## Day2 2021/7/3
+
+### 学习内容
+1. 学习了《rust编程之道》第九章和第十章的内容
